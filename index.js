@@ -13,7 +13,7 @@ const generateScrapperApiKey = (apiKey) =>
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome api");
+  res.send("Welcome Ecommerce Details Api @copyright Zaid");
 });
 
 // GEt PRoduct Details
