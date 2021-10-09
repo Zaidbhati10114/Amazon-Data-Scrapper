@@ -36,7 +36,7 @@ app.get("/products/:productId", async (req, res) => {
 
 app.get("/products/:productId/reviews", async (req, res) => {
   const { productId } = req.params;
-  const { apikey } = req.query;
+  const { api_key } = req.query;
 
   try {
     const response = await request(
@@ -53,12 +53,12 @@ app.get("/products/:productId/reviews", async (req, res) => {
 // Get Product Offers
 app.get("/products/:productId/offers", async (req, res) => {
   const { productId } = req.params;
-  const { apikey } = req.query;
+  const { api_key } = req.query;
 
   try {
     const response = await request(
       `${generateScrapperApiKey(
-        apiKey
+        api_Key
       )}&url=https://www.amazon.com/gp/offer-listing/${productId}`
     );
     res.json(JSON.parse(response));
@@ -71,12 +71,12 @@ app.get("/products/:productId/offers", async (req, res) => {
 
 app.get("/search/:searchQuery", async (req, res) => {
   const { searchQuery } = req.params;
-  const { apikey } = req.query;
+  const { api_key } = req.query;
 
   try {
     const response = await request(
       `${generateScrapperApiKey(
-        apiKey
+        api_Key
       )}&url=https://www.amazon.com/s?k=${searchQuery}`
     );
     res.json(JSON.parse(response));
