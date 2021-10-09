@@ -5,8 +5,6 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-// const apiKey = "d4c2f7fba0c30cc8ff79a3f239c54afd";
-
 const generateScrapperApiKey = (apiKey) =>
   `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
 
@@ -20,7 +18,7 @@ app.get("/", (req, res) => {
 
 app.get("/products/:productId", async (req, res) => {
   const { productId } = req.params;
-  const { apikey } = req.query;
+  const { api_key } = req.query;
 
   try {
     const response = await request(
@@ -43,7 +41,7 @@ app.get("/products/:productId/reviews", async (req, res) => {
   try {
     const response = await request(
       `${generateScrapperApiKey(
-        apiKey
+        api_Key
       )}&url=https://www.amazon.com/product-reviews/${productId}`
     );
     res.json(JSON.parse(response));
